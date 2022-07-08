@@ -1,6 +1,8 @@
+@use "../mixins" as mixins;
 .slider {
 	max-width: 1160px;
-	margin: 120px auto 0;
+	margin: 120px auto 80px;
+	padding: 0 20px;
 	font-family: "Roboto", sans-serif;
 	color: #527ccd;
 
@@ -8,6 +10,11 @@
 		margin-bottom: 60px;
 		display: flex;
 		align-items: center;
+		@include mixins.tablet-landscape {
+			flex-direction: column;
+			justify-content: center;
+			margin-bottom: 30px;
+		}
 	}
 	&__title {
 		width: 278px;
@@ -15,20 +22,35 @@
 		font-size: 50px;
 		line-height: 60px;
 		font-weight: 700;
+		@include mixins.tablet-landscape {
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		@include mixins.tablet {
+			font-size: 40px;
+			line-height: 50px;
+		}
 	}
 	&__progress {
+		max-width: 100%;
 		width: 360px;
 		height: 2px;
 		background-color: #ccddff;
 		margin-left: auto;
+		@include mixins.tablet-landscape {
+			justify-content: flex-start;
+			align-items: center;
+			margin-bottom: 25px;
+			margin-left: 0;
+		}
 	}
 	&__progress-completed {
 		height: 100%;
 		width: 0;
 		background-color: #527ccd;
-		
+
 		&.active {
-			width: 100%;			
+			width: 100%;
 			animation-name: fill;
 			animation-duration: 4s;
 			animation-timing-function: linear;
@@ -51,6 +73,10 @@
 		flex-direction: row;
 		justify-content: space-between;
 		margin-left: 40px;
+
+		@include mixins.tablet-landscape {
+			margin-left: 0;
+		}
 	}
 	&__button {
 		width: 60px;
@@ -60,14 +86,26 @@
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
-		transition-duration: .5s;
+		transition-duration: 0.5s;
 
-		&:hover, &:active {
-			background-color: #C8D9FB;
+		@include mixins.tablet-landscape {
+			width: 40px;
+			height: 40px;
+		}
+		@include mixins.small-phone {
+			width: 30px;
+			height: 30px;
+		}
+		&:hover,
+		&:active {
+			background-color: #c8d9fb;
 		}
 
 		&:not(:last-child) {
 			margin-right: 40px;
+			@include mixins.tablet {
+				margin-right: 20px;
+			}
 		}
 	}
 	&__arrow {
@@ -87,12 +125,17 @@
 	}
 	&__body-wrapper {
 		display: flex;
-  	position: relative;
+		position: relative;
 		column-gap: 40px;
 		left: -300px;
 
+		@include mixins.phone {
+			column-gap: 20px;
+			left: -260px;
+		}
+
 		&.shifting {
-			transition: left .2s ease-out;
+			transition: left 0.2s ease-out;
 		}
 	}
 	&__item {
@@ -107,6 +150,10 @@
 		color: #527ccd;
 		position: relative;
 
+		@include mixins.phone {
+			min-width: 240px;
+		}
+
 		&.active {
 			border: 1px solid #527ccd;
 		}
@@ -118,6 +165,11 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		margin-bottom: 10px;
+
+		@include mixins.phone {
+			height: 145px;
+			margin-bottom: 6px;
+		}
 	}
 	&__item-date {
 		font-size: 12px;
@@ -125,6 +177,12 @@
 		opacity: 0.6;
 		margin-bottom: 10px;
 		align-self: flex-start;
+
+		@include mixins.phone {
+			font-size: 10px;
+			line-height: 18px;
+			margin-bottom: 6px;
+		}
 	}
 	&__item-title {
 		margin-bottom: 10px;
@@ -133,6 +191,12 @@
 
 		// В макете у второго блока title на 10 пикселей шире остальных
 		margin-right: -3px;
+
+		@include mixins.phone {
+			font-size: 12px;
+			line-height: 20px;
+			margin-bottom: 6px;
+		}
 	}
 	&__item-text {
 		display: -webkit-box;
@@ -143,5 +207,11 @@
 		overflow: hidden;
 		height: 88px;
 		margin-top: auto;
+
+		@include mixins.phone {
+			font-size: 10px;
+			line-height: 18px;
+			height: 72px;
+		}
 	}
 }
