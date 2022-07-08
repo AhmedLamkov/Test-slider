@@ -1,0 +1,140 @@
+.slider {
+	max-width: 1160px;
+	margin: 120px auto 0;
+	font-family: "Roboto", sans-serif;
+	color: #527ccd;
+
+	&__head {
+		margin-bottom: 60px;
+		display: flex;
+		align-items: center;
+	}
+	&__title {
+		width: 278px;
+		height: 60px;
+		font-size: 50px;
+		line-height: 60px;
+		font-weight: 700;
+	}
+	&__progress {
+		width: 360px;
+		height: 2px;
+		background-color: #ccddff;
+		margin-left: auto;
+	}
+	&__progress-completed {
+		height: 100%;
+		width: 100%;
+		background-color: #527ccd;
+		animation-name: fill;
+		animation-duration: 4s;
+		animation-timing-function: linear;
+		transform-origin: left;
+		animation-iteration-count: infinite;
+		animation-delay: 0.5s;
+	}
+	@keyframes fill {
+		0%,
+		10% {
+			transform: scaleX(0);
+		}
+		90%,
+		100% {
+			transform: scaleX(1);
+		}
+	}
+	&__controls {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-left: 40px;
+	}
+	&__button {
+		width: 60px;
+		height: 60px;
+		border: 1px solid #ccddff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:not(:last-child) {
+			margin-right: 40px;
+		}
+	}
+	&__arrow {
+		width: 10px;
+		height: 20px;
+		background-image: url(/src/img/Vector-left.svg);
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	&__arrow--reversed {
+		width: 10px;
+		height: 20px;
+		background-image: url(/src/img/Vector-right.svg);
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	&__body {
+		display: flex;
+		column-gap: 40px;
+		position: relative;
+		width: 100%;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		height: 420px;
+	}
+	&__item {
+		position: absolute;
+		flex: 0 1 25%;
+		min-width: 260px;
+		height: 420px;
+		border: 1px solid #ccddff;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		box-sizing: border-box;
+		color: #527ccd;
+		transition: all ease 0.6s;
+		left: 0;
+		top: 0;
+
+		&.active {
+			border: 1px solid #527ccd;
+		}
+	}
+	&__item-image {
+		width: 100%;
+		height: 160px;
+		background-image: url(/src/img/Photo.svg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		margin-bottom: 10px;
+	}
+	&__item-date {
+		font-size: 12px;
+		line-height: 22px;
+		opacity: 0.6;
+		margin-bottom: 10px;
+		align-self: flex-start;
+	}
+	&__item-title {
+		margin-bottom: 10px;
+		font-size: 16px;
+		line-height: 26px;
+
+		// В макете у второго блока title на 10 пикселей шире остальных
+		margin-right: -3px;
+	}
+	&__item-text {
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		font-size: 12px;
+		line-height: 22px;
+		overflow: hidden;
+		height: 88px;
+		margin-top: auto;
+	}
+}

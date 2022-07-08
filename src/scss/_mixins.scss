@@ -1,0 +1,23 @@
+@mixin font($size, $height) {
+  font-size: $size;
+  line-height: $height;
+}
+
+@mixin small-phone {
+  @media (max-width: 360px) { @content; }
+}
+@mixin phone {
+  @media (max-width: 576px) { @content; }
+}
+@mixin tablet {
+  @media (max-width: 768px) { @content; }
+}
+@mixin tablet-landscape {
+  @media (max-width: 992px) { @content; }
+}
+@mixin laptop {
+  @media (max-width: 1280px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1281px) { @content; }
+}
